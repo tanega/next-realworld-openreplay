@@ -7,6 +7,11 @@ function defaultGetUserId() {
   return uuidV4();
 }
 function newTracker(config) {
+  console.log(
+    "process.env.NEXT_PUBLIC_OPENREPLAY_PROJECT_KEY",
+    process.env.NEXT_PUBLIC_OPENREPLAY_PROJECT_KEY
+  );
+  console.log("config", config);
   const getUserId =
     config?.userIdEnabled && config?.getUserId
       ? config.getUserId
@@ -28,12 +33,14 @@ function reducer(state, action) {
     case "init": {
       if (!state.tracker) {
         console.log("Instantiaing the tracker for the first time...");
+        console.log(state);
         return { ...state, tracker: newTracker(state.config) };
       }
       return state;
     }
     case "start": {
       console.log("Starting tracker...");
+      console.log(state);
       state.tracker.start();
       return state;
     }
