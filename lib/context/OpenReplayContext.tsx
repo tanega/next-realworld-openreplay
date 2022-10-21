@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import Tracker from "@openreplay/tracker";
+import Tracker from "@openreplay/tracker/cjs";
 import { v4 as uuidV4 } from "uuid";
 import { useReducer } from "react";
 export const TrackerContext = createContext<any>(undefined);
